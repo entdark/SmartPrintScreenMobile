@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sps="clr-namespace:SmartPrintScreenMobile;assembly=SmartPrintScreenMobile"
+             x:Class="SmartPrintScreenMobile.SettingsPage"
+             Title="{sps:Translate Settings}"
+             Padding="0.0">
+    <ContentPage.Content>
+        <ListView x:Name="settingsListView"
+                    SeparatorVisibility="None"
+                    ItemSelected="ItemSelected"
+                    BindingContext="SettingsOptionsViewModel"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="16.0, 4.0, 16.0, 4.0"
+                                     Spacing="16.0"
+                                     Orientation="Horizontal">
+                            <Label Text="{Binding Text}"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Start"
+                                   HorizontalOptions="StartAndExpand"/>
+                            <Switch IsToggled="{Binding IsToggled}"
+                                    HorizontalOptions="End"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
