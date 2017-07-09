@@ -98,11 +98,29 @@ namespace SmartPrintScreenMobile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Screenshot URL is copied to clipboard.
+        ///   Looks up a localized string similar to Copied URLs list to clipboard.
+        /// </summary>
+        public static string CopiedList {
+            get {
+                return ResourceManager.GetString("CopiedList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copied screenshot URL to clipboard.
         /// </summary>
         public static string CopiedToClipboardToast {
             get {
                 return ResourceManager.GetString("CopiedToClipboardToast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy list.
+        /// </summary>
+        public static string CopyList {
+            get {
+                return ResourceManager.GetString("CopyList", resourceCulture);
             }
         }
         

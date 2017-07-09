@@ -21,10 +21,12 @@ namespace SmartPrintScreenMobile {
 				if (items == null || items.Count == 0) {
 					emptyListLabel.IsVisible = true;
 					screenshotsListView.IsVisible = false;
+					copyListToolbarItem.IsVisible = false;
 					clearListToolbarItem.IsVisible = false;
 				} else if (emptyListLabel.IsVisible || !screenshotsListView.IsVisible) {
 					emptyListLabel.IsVisible = false;
 					screenshotsListView.IsVisible = true;
+					copyListToolbarItem.IsVisible = true;
 					clearListToolbarItem.IsVisible = true;
 				}
 			};
@@ -81,6 +83,21 @@ namespace SmartPrintScreenMobile {
 				Settings.ScreenshotsList = string.Empty;
 				this.ScreenshotsList.Clear();
 			}
+		}
+		private async void CopyListClicked(object sender, EventArgs ev) {
+			if (this.ScreenshotsList.Count <= 0)
+				return;
+			string list = "";
+			bool firstIteration = true;
+			foreach (var screenshot in this.ScreenshotsList) {
+				if (firstIteration)
+					firstIteration = false;
+				else
+					list += "\n";
+				list += screenshot;
+			}
+			Plugin.Clipboard.CrossClipboard.Current.SetText(list);
+			await DisplayAlert(null, Strings.CopiedList, Strings.Ok);
 		}
 	}
 }

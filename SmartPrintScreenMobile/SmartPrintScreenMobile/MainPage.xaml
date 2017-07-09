@@ -9,6 +9,10 @@
         <sps:HideableToolbarItem Name="{sps:Translate Settings}"
                                  Order="Secondary"
                                  Activated="SettingsClicked"/>
+        <sps:HideableToolbarItem x:Name="copyListToolbarItem"
+                                   Name="{sps:Translate CopyList}"
+                                   Order="Secondary"
+                                   Activated="CopyListClicked"/>
         <sps:HideableToolbarItem x:Name="clearListToolbarItem"
                                    Name="{sps:Translate ClearList}"
                                    Order="Secondary"

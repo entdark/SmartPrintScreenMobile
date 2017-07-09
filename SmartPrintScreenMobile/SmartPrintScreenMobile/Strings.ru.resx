@@ -130,8 +130,14 @@
   <data name="ClearListQ" xml:space="preserve">
     <value>Очистить список ссылок?</value>
   </data>
+  <data name="CopiedList" xml:space="preserve">
+    <value>Список снимков экрана скопирован</value>
+  </data>
   <data name="CopiedToClipboardToast" xml:space="preserve">
     <value>Ссылка снимка экрана скопирована</value>
+  </data>
+  <data name="CopyList" xml:space="preserve">
+    <value>Копировать список</value>
   </data>
   <data name="CopyURL" xml:space="preserve">
     <value>Копировать ссылку</value>

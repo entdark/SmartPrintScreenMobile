@@ -130,8 +130,14 @@
   <data name="ClearListQ" xml:space="preserve">
     <value>Clear URLs list?</value>
   </data>
+  <data name="CopiedList" xml:space="preserve">
+    <value>Copied URLs list to clipboard</value>
+  </data>
   <data name="CopiedToClipboardToast" xml:space="preserve">
-    <value>Screenshot URL is copied to clipboard</value>
+    <value>Copied screenshot URL to clipboard</value>
+  </data>
+  <data name="CopyList" xml:space="preserve">
+    <value>Copy list</value>
   </data>
   <data name="CopyURL" xml:space="preserve">
     <value>Copy URL</value>
