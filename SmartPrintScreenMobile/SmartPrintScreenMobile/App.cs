@@ -8,7 +8,9 @@ namespace SmartPrintScreenMobile {
 				Strings.Culture = ci; // set the RESX for resource localization
 				DependencyService.Get<ILocalize>().SetLocale(ci); // set the Thread for locale-aware methods
 			}
-			MainPage = new NavigationPage(new MainPage());
+			MainPage = new NavigationPage(new MainPage()) {
+				BarTextColor = Color.FromHex("FFFFFF")
+			};
 		}
 
 		protected override void OnStart() {

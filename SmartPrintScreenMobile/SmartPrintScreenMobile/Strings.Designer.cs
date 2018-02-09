@@ -20,7 +20,7 @@ namespace SmartPrintScreenMobile {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
@@ -71,11 +71,29 @@ namespace SmartPrintScreenMobile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cache screenshots.
+        /// </summary>
+        public static string CacheScreenshots {
+            get {
+                return ResourceManager.GetString("CacheScreenshots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear cache.
+        /// </summary>
+        public static string ClearCache {
+            get {
+                return ResourceManager.GetString("ClearCache", resourceCulture);
             }
         }
         
@@ -157,9 +175,24 @@ namespace SmartPrintScreenMobile {
         ///Hold down &quot;Power&quot;+&quot;Volume Down&quot;
         ///to capture a screenshot.
         /// </summary>
-        public static string EmptyList {
+        public static string EmptyListAndroid {
             get {
-                return ResourceManager.GetString("EmptyList", resourceCulture);
+                return ResourceManager.GetString("EmptyListAndroid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The list is empty :(
+        ///
+        ///Hold down &quot;Sleep&quot;+&quot;Home&quot;
+        ///to capture a screenshot
+        ///
+        ///Then tap &quot;Share&quot; and
+        ///select &quot;SmartScreenShot&quot;.
+        /// </summary>
+        public static string EmptyListiOS {
+            get {
+                return ResourceManager.GetString("EmptyListiOS", resourceCulture);
             }
         }
         
@@ -170,6 +203,15 @@ namespace SmartPrintScreenMobile {
         public static string ErrorCheckConnection {
             get {
                 return ResourceManager.GetString("ErrorCheckConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Format error.
+        /// </summary>
+        public static string ErrorFormat {
+            get {
+                return ResourceManager.GetString("ErrorFormat", resourceCulture);
             }
         }
         
@@ -239,11 +281,38 @@ namespace SmartPrintScreenMobile {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show as list.
+        /// </summary>
+        public static string ShowAsList {
+            get {
+                return ResourceManager.GetString("ShowAsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show as tiles.
+        /// </summary>
+        public static string ShowAsTiles {
+            get {
+                return ResourceManager.GetString("ShowAsTiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start on device boot.
         /// </summary>
         public static string StartOnBoot {
             get {
                 return ResourceManager.GetString("StartOnBoot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploading....
+        /// </summary>
+        public static string Uploading {
+            get {
+                return ResourceManager.GetString("Uploading", resourceCulture);
             }
         }
     }

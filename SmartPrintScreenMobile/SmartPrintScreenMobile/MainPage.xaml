@@ -2,102 +2,86 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sps="clr-namespace:SmartPrintScreenMobile;assembly=SmartPrintScreenMobile"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Name="MainPage"
              x:Class="SmartPrintScreenMobile.MainPage"
              Title="{sps:Translate AppName}"
+             BackgroundColor="#303030"
              Padding="0.0">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sps:InvertedBoolValueConverter x:Key="invertedBool"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <sps:HideableToolbarItem Name="{sps:Translate Settings}"
+        <ToolbarItem x:Name="moreToolbarItem"
+                     Text="☰"
+                     Order="Primary"
+                     Activated="MoreClicked"/>
+        <sps:HideableToolbarItem Text="{sps:Translate Settings}"
                                  Order="Secondary"
                                  Activated="SettingsClicked"/>
-        <sps:HideableToolbarItem x:Name="copyListToolbarItem"
-                                   Name="{sps:Translate CopyList}"
-                                   Order="Secondary"
-                                   Activated="CopyListClicked"/>
-        <sps:HideableToolbarItem x:Name="clearListToolbarItem"
-                                   Name="{sps:Translate ClearList}"
-                                   Order="Secondary"
-                                   Activated="ClearListClicked"/>
+        <sps:HideableToolbarItem Text="{sps:Translate CopyList}"
+                                 Order="Secondary"
+                                 Activated="CopyListClicked"
+                                 IsVisible="{Binding ShowToolbarItems, Source={x:Reference MainPage}}"/>
+        <sps:HideableToolbarItem Text="{sps:Translate ClearList}"
+                                 Order="Secondary"
+                                 Activated="ClearListClicked"
+                                 IsVisible="{Binding ShowToolbarItems, Source={x:Reference MainPage}}"/>
+        <sps:HideableToolbarItem Text="{Binding ViewModeToolbarItemText, Source={x:Reference MainPage}}"
+                                 Order="Secondary"
+                                 Activated="ToggleViewModeClicked"
+                                 IsVisible="{Binding ShowToolbarItems, Source={x:Reference MainPage}}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <RelativeLayout Padding="0.0">
-            <Label x:Name="emptyListLabel" Text="{sps:Translate EmptyList}"
-                     Opacity="0.25"
-                     HorizontalTextAlignment="Center"
-                     VerticalTextAlignment="Center"
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     RelativeLayout.XConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Width,
-                         Factor=0.0,
-                         Constant=0.0
-                     }"
-                     RelativeLayout.YConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Height,
-                         Factor=0.0,
-                         Constant=0.0
-                     }"
-                     RelativeLayout.WidthConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Width,
-                         Factor=1.0,
-                         Constant=0.0
-                     }"
-                     RelativeLayout.HeightConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Height,
-                         Factor=1.0,
-                         Constant=0.0
-                     }"/>
-            <ListView x:Name="screenshotsListView"
-                        SeparatorVisibility="Default"
-                        ItemSelected="ItemSelected"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand"
-                        RelativeLayout.XConstraint="{
-                            ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Width,
-                            Factor=0.0,
-                            Constant=0.0
-                        }"
-                        RelativeLayout.YConstraint="{
-                            ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Height,
-                            Factor=0.0,
-                            Constant=0.0
-                        }"
-                        RelativeLayout.WidthConstraint="{
-                            ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Width,
-                            Factor=1.0,
-                            Constant=0.0
-                        }"
-                        RelativeLayout.HeightConstraint="{
-                            ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Height,
-                            Factor=1.0,
-                            Constant=0.0
-                        }">
+        <AbsoluteLayout Padding="0.0">
+            <ListView x:Name="listView" ItemsSource="{Binding ScreenshotsList}"
+                      SeparatorVisibility="Default"
+                      SeparatorColor="#4E4E4E"
+                      ItemSelected="ItemSelected"
+                      AbsoluteLayout.LayoutFlags="All"
+                      AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
+                      IsVisible="{Binding TilesViewMode, Converter={StaticResource invertedBool}}"
+                      BackgroundColor="#303030">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Label Text="{Binding .}"
-                                    Margin="16.0, 0.0, 16.0, 0.0"
-                                    HorizontalTextAlignment="Start"
-                                    VerticalTextAlignment="Center"/>
+                                   TextColor="#C1C1C1"
+                                   Margin="16.0, 0.0, 16.0, 0.0"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Center"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </RelativeLayout>
+            <ScrollView x:Name="scrollView"
+                        Orientation="Vertical"
+                        Scrolled="LayoutScrolled"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
+                        IsVisible="{Binding TilesViewMode}"
+                        BackgroundColor="#303030">
+                <AbsoluteLayout x:Name="layout"
+                                VerticalOptions="Start"
+                                Padding="2.0"/>
+            </ScrollView>
+            <Label Opacity="0.25"
+                   TextColor="#C1C1C1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
+                   IsVisible="{Binding HavingScreenshots, Converter={StaticResource invertedBool}}"
+                   BackgroundColor="#303030">
+                <Label.Text>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="Android" Value="{sps:Translate EmptyListAndroid}"/>
+                        <On Platform="iOS" Value="{sps:Translate EmptyListiOS}"/>
+                    </OnPlatform>
+                </Label.Text>
+            </Label>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -28,7 +28,7 @@ namespace SmartPrintScreenMobile.Droid {
 		private static string eStorage = Android.OS.Environment.ExternalStorageDirectory.ToString();
 		private static string sep = Java.IO.File.Separator;
 		//Folder that is supposed to contain "Screenshots" folder
-		private static string[] screenshotsFolder = {
+		private static string []screenshotsFolder = {
 		eStorage,
 		eStorage + sep + Android.OS.Environment.DirectoryPictures,
 		eStorage + sep + Android.OS.Environment.DirectoryDcim,
@@ -109,7 +109,7 @@ namespace SmartPrintScreenMobile.Droid {
 				if (bitmap != null) {
 					bool disposed = false;
 					Task.Run(async () => {
-						string url = await SmartPrintScreen.UploadToImgurTask(bitmap, screenshotFile);
+						string url = await SmartPrintScreen.UploadToImgurTask(bitmap);
 						bitmap.Dispose();
 						disposed = true;
 						SmartPrintScreen.PostUpload(service, url, screenshotFile);
@@ -123,22 +123,12 @@ namespace SmartPrintScreenMobile.Droid {
 				}
 			}
 		}
-		private static async Task<string> UploadToImgurTask(Bitmap bitmap, string screenshotFile) {
+		private static async Task<string> UploadToImgurTask(Bitmap bitmap) {
 			try {
-				using (var w = new WebClient()) {
-					w.Headers.Add("Authorization", "Client-ID " + APIKeys.ImgurClientID);
-					System.Collections.Specialized.NameValueCollection Keys = new System.Collections.Specialized.NameValueCollection();
-					using (MemoryStream ms = new MemoryStream()) {
-						bitmap.Compress(Bitmap.CompressFormat.Png, 100, ms);
-						byte[] byteImage = ms.ToArray();
-						Keys.Add("image", Convert.ToBase64String(byteImage));
-					}
-					byte[] responseArray = await w.UploadValuesTaskAsync("https://api.imgur.com/3/image", Keys);
-					string result = Encoding.ASCII.GetString(responseArray);
-					Regex reg = new Regex("link\":\"(.*?)\"");
-					Match match = reg.Match(result);
-					string url = match.ToString().Replace("link\":\"", "").Replace("\"", "").Replace("\\/", "/");
-					return url;
+				using (MemoryStream ms = new MemoryStream()) {
+					bitmap.Compress(Bitmap.CompressFormat.Png, 100, ms);
+					byte []byteImage = ms.ToArray();
+					return await HttpService.UploadToImgur(ms.ToArray());
 				}
 			} catch (Exception exception) {
 				return null;

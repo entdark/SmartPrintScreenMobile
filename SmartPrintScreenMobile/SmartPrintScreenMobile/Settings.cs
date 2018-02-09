@@ -33,6 +33,18 @@ namespace SmartPrintScreenMobile {
 			}
 		}
 #endregion
+#region CacheScreenshots
+		private const string cacheScreenshotsKey = "cache_screenshots";
+		private static readonly bool cacheScreenshotsDefault = true;
+		public static bool CacheScreenshots {
+			get {
+				return AppSettings.GetValueOrDefault(cacheScreenshotsKey, cacheScreenshotsDefault);
+			}
+			set {
+				AppSettings.AddOrUpdateValue(cacheScreenshotsKey, value);
+			}
+		}
+#endregion
 #region ScreenshotsList
 		private const string screenshotsListKey = "screenshots_list";
 		private static readonly string screenshotsListDefault = string.Empty;
@@ -42,6 +54,18 @@ namespace SmartPrintScreenMobile {
 			}
 			set {
 				AppSettings.AddOrUpdateValue(screenshotsListKey, value);
+			}
+		}
+#endregion
+#region TilesViewMode
+		private const string tilesViewModeKey = "tiles_view_mode";
+		private static readonly bool tilesViewModeDefault = true;
+		public static bool TilesViewMode {
+			get {
+				return AppSettings.GetValueOrDefault(tilesViewModeKey, tilesViewModeDefault);
+			}
+			set {
+				AppSettings.AddOrUpdateValue(tilesViewModeKey, value);
 			}
 		}
 #endregion

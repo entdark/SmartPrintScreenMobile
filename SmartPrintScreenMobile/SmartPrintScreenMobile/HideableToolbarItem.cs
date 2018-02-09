@@ -6,8 +6,8 @@ namespace SmartPrintScreenMobile {
 		public HideableToolbarItem() {}
 		
 		public bool IsVisible {
-			get { return (bool)GetValue(IsVisibleProperty); }
-			set { SetValue(IsVisibleProperty, value); }
+			get { return (bool)this.GetValue(IsVisibleProperty); }
+			set { this.SetValue(IsVisibleProperty, value); }
 		}
 
 		public static BindableProperty IsVisibleProperty =

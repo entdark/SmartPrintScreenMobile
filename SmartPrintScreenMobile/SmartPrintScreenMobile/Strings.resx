@@ -121,8 +121,14 @@
     <value>SmartScreenShot</value>
     <comment>SmartPrintScreen -&gt; SmartScreenShot for mobile</comment>
   </data>
+  <data name="CacheScreenshots" xml:space="preserve">
+    <value>Cache screenshots</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="ClearCache" xml:space="preserve">
+    <value>Clear cache</value>
   </data>
   <data name="ClearList" xml:space="preserve">
     <value>Clear list</value>
@@ -148,15 +154,27 @@
   <data name="DeleteQ" xml:space="preserve">
     <value>Delete this screenshot URL?</value>
   </data>
-  <data name="EmptyList" xml:space="preserve">
+  <data name="EmptyListAndroid" xml:space="preserve">
     <value>The list is empty :(
 
 Hold down "Power"+"Volume Down"
 to capture a screenshot</value>
   </data>
+  <data name="EmptyListiOS" xml:space="preserve">
+    <value>The list is empty :(
+
+Hold down "Sleep"+"Home"
+to capture a screenshot
+
+Then tap "Share" and
+select "SmartScreenShot"</value>
+  </data>
   <data name="ErrorCheckConnection" xml:space="preserve">
     <value>An error occured,
 check your internet connection</value>
+  </data>
+  <data name="ErrorFormat" xml:space="preserve">
+    <value>Format error</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Loading...</value>
@@ -181,7 +199,16 @@ to write to external storage</value>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="ShowAsList" xml:space="preserve">
+    <value>Show as list</value>
+  </data>
+  <data name="ShowAsTiles" xml:space="preserve">
+    <value>Show as tiles</value>
+  </data>
   <data name="StartOnBoot" xml:space="preserve">
     <value>Start on device boot</value>
+  </data>
+  <data name="Uploading" xml:space="preserve">
+    <value>Uploading...</value>
   </data>
 </root>

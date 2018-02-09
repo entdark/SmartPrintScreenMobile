@@ -3,27 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sps="clr-namespace:SmartPrintScreenMobile;assembly=SmartPrintScreenMobile"
              x:Class="SmartPrintScreenMobile.SettingsPage"
+             x:Name="SettingsPage"
              Title="{sps:Translate Settings}"
+             BackgroundColor="#303030"
              Padding="0.0">
     <ContentPage.Content>
-        <ListView x:Name="settingsListView"
-                    SeparatorVisibility="None"
-                    ItemSelected="ItemSelected"
-                    BindingContext="SettingsOptionsViewModel"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
+        <ListView ItemsSource="{Binding SettingsItems, Source={x:Reference SettingsPage}}"
+                  SeparatorVisibility="None"
+                  ItemSelected="ItemSelected"
+                  BindingContext="SettingsOptionsViewModel"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  BackgroundColor="#303030">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="16.0, 4.0, 16.0, 4.0"
-                                     Spacing="16.0"
+                        <StackLayout Spacing="8.0"
                                      Orientation="Horizontal">
+                            <StackLayout.Padding>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="Android" Value="16.0, 4.0, 16.0, 4.0"/>
+                                    <On Platform="iOS" Value="16.0, 8.0, 16.0, 8.0"/>
+                                </OnPlatform>
+                            </StackLayout.Padding>
                             <Label Text="{Binding Text}"
+                                   TextColor="#C1C1C1"
                                    VerticalTextAlignment="Center"
                                    HorizontalTextAlignment="Start"
-                                   HorizontalOptions="StartAndExpand"/>
+                                   HorizontalOptions="StartAndExpand"
+                                   LineBreakMode="WordWrap"/>
                             <Switch IsToggled="{Binding IsToggled}"
-                                    HorizontalOptions="End"/>
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

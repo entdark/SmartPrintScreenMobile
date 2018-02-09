@@ -121,8 +121,14 @@
     <value>SmartScreenShot</value>
     <comment>SmartPrintScreen -&gt; SmartScreenShot for mobile</comment>
   </data>
+  <data name="CacheScreenshots" xml:space="preserve">
+    <value>Кэшировать снимки экрана</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Отмена</value>
+  </data>
+  <data name="ClearCache" xml:space="preserve">
+    <value>Очистить кэш</value>
   </data>
   <data name="ClearList" xml:space="preserve">
     <value>Очистить список</value>
@@ -148,15 +154,27 @@
   <data name="DeleteQ" xml:space="preserve">
     <value>Удалить ссылку на этот снимок экрана?</value>
   </data>
-  <data name="EmptyList" xml:space="preserve">
+  <data name="EmptyListAndroid" xml:space="preserve">
     <value>Список пуст :(
 
 Зажми "Включить"+"Уменьшить Громкость",
 чтобы сделать снимок экрана</value>
   </data>
+  <data name="EmptyListiOS" xml:space="preserve">
+    <value>Список пуст :(
+
+Зажми "Сон"+"Домой",
+чтобы сделать снимок экрана
+
+Затем нажми "Поделиться"
+и выбери "SmartScreenShot"</value>
+  </data>
   <data name="ErrorCheckConnection" xml:space="preserve">
     <value>Произошла ошибка,
 проверьте соединение с интернетом</value>
+  </data>
+  <data name="ErrorFormat" xml:space="preserve">
+    <value>Ошибка формата</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Загрузка...</value>
@@ -181,7 +199,16 @@
   <data name="Settings" xml:space="preserve">
     <value>Настройки</value>
   </data>
+  <data name="ShowAsList" xml:space="preserve">
+    <value>Показать списком</value>
+  </data>
+  <data name="ShowAsTiles" xml:space="preserve">
+    <value>Показать плиткой</value>
+  </data>
   <data name="StartOnBoot" xml:space="preserve">
-    <value>Запускать при включении</value>
+    <value>Запускать при включении устройства</value>
+  </data>
+  <data name="Uploading" xml:space="preserve">
+    <value>Загрузка...</value>
   </data>
 </root>

@@ -4,82 +4,39 @@
              xmlns:sps="clr-namespace:SmartPrintScreenMobile;assembly=SmartPrintScreenMobile"
              x:Class="SmartPrintScreenMobile.ScreenshotPage"
              Title="{sps:Translate Screenshot}"
+             BackgroundColor="#303030"
              Padding="0.0">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sps:InvertedBoolValueConverter x:Key="invertedBool"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="moreToolbarItem"
+                     Text="☰"
+                     Order="Primary"
+                     Activated="MoreClicked"/>
         <ToolbarItem Name="{sps:Translate CopyURL}"
-                     Activated="CopyScreenshot"
-                     Order="Secondary"/>
+                     Order="Secondary"
+                     Activated="CopyScreenshotClicked"/>
         <ToolbarItem Name="{sps:Translate Delete}"
-                     Activated="DeleteScreenshot"
-                     Order="Secondary"/>
+                     Order="Secondary"
+                     Activated="DeleteScreenshotClicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <RelativeLayout Padding="0.0">
-            <Label x:Name="connectionStateLabel" Text="{sps:Translate Loading}"
-                     HorizontalTextAlignment="Center"
-                     VerticalTextAlignment="Center"
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     RelativeLayout.XConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Width,
-                         Factor=0.0,
-                         Constant=0.0
-                     }"
-                     RelativeLayout.YConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Height,
-                         Factor=0.0,
-                         Constant=0.0
-                     }"
-                     RelativeLayout.WidthConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Width,
-                         Factor=1.0,
-                         Constant=0.0
-                     }"
-                     RelativeLayout.HeightConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Height,
-                         Factor=1.0,
-                         Constant=0.0
-                     }"/>
-            <Image x:Name="screenshotImage"
-                     Aspect="AspectFit"
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     RelativeLayout.XConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Width,
-                         Factor=0.0,
-                         Constant=0.0
-                     }"
-                     RelativeLayout.YConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Height,
-                         Factor=0.0,
-                         Constant=0.0
-                     }"
-                     RelativeLayout.WidthConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Width,
-                         Factor=1.0,
-                         Constant=0.0
-                     }"
-                     RelativeLayout.HeightConstraint="{
-                         ConstraintExpression
-                         Type=RelativeToParent,
-                         Property=Height,
-                         Factor=1.0,
-                         Constant=0.0
-                     }"/>
-        </RelativeLayout>
+        <AbsoluteLayout Padding="0.0">
+            <Label Text="{sps:Translate ErrorCheckConnection}"
+                   TextColor="#C1C1C1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
+                   IsVisible="{Binding IsValidScreenshot, Converter={StaticResource invertedBool}}"/>
+            <sps:LoadingImage x:Name="loadingImage"
+                              Source="{Binding Screenshot}"
+                              FinishedLoading="FinishedLoading"
+                              AbsoluteLayout.LayoutFlags="All"
+                              AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
